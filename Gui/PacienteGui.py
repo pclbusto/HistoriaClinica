@@ -4,6 +4,7 @@ import PIL.Image, PIL.ImageTk
 from iconos import Iconos
 from Gui import FrameGenerico as fg
 from datetime import datetime
+from Entidades import Paciente
 
 class Paciente(fg.FrameGenerico):
     def __init__(self, parent, cnf={}, **kw):
@@ -48,6 +49,8 @@ class Paciente(fg.FrameGenerico):
         self.entradaDireccion = Entry(panelPrincipal)
         self.entradaDireccion.grid(row=3, column=1)
 
+        self.botonGuardar.config(command=self.guardar)
+
     def entradaFechaNacimientoPosEvent(self,event):
         cadena = self.stringVarFechaNacimiento.get()
         if cadena.rfind("/"):
@@ -58,6 +61,9 @@ class Paciente(fg.FrameGenerico):
             struct_time = datetime.strptime(cadena, "%d%m%Y")
         except ValueError as e:
             self.stringVarFechaNacimiento.set("01/01/1900")
+    def guardar(self):
+        paciente = Paciente.Paciente()
+        paciente.pacienteNombre = self.entradaNombre.get()
 
 if __name__ == '__main__':
     root = Tk()
