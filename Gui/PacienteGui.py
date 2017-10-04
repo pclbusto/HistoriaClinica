@@ -49,6 +49,26 @@ class Paciente(fg.FrameGenerico):
         self.entradaDireccion = Entry(panelPrincipal)
         self.entradaDireccion.grid(row=3, column=1)
 
+        Label(panelPrincipal, text="motivo de consulta").grid(row=4, column=0)
+        self.textMotivoConsulta = Text(panelPrincipal,height=6)
+        self.textMotivoConsulta.grid(row=5, column=0, columnspan=7, sticky=(E, W))
+
+        Label(panelPrincipal, text="Antecedentes").grid(row=6, column=0)
+        self.textAntecedentes = Text(panelPrincipal,height=6)
+        self.textAntecedentes.grid(row=7, column=0, columnspan=7, sticky=(N, E, S, W))
+
+        Label(panelPrincipal, text="Problema Actual").grid(row=8, column=0)
+        self.textProblemaActual = Text(panelPrincipal,height=6)
+        self.textProblemaActual.grid(row=9, column=0,columnspan=7,sticky=(N,E,S,W))
+
+        Label(panelPrincipal, text="Evaluación").grid(row=10, column=0)
+        self.textEvaluacion = Text(panelPrincipal,height=6)
+        self.textEvaluacion.grid(row=11, column=0,columnspan=7,sticky=(N,E,S,W))
+
+        Label(panelPrincipal, text="Evolución").grid(row=12, column=0)
+        self.textEvolucion = Text(panelPrincipal,height=6)
+        self.textEvolucion.grid(row=13, column=0,columnspan=7,sticky=(N,E,S,W))
+
         self.botonGuardar.config(command=self.guardar)
 
     def entradaFechaNacimientoPosEvent(self,event):
