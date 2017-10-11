@@ -45,13 +45,47 @@ class FrameGenerico(Frame):
         self.botonGuardar.grid(row=0, column=2, sticky=E)
         self.botonGuardar = Button(self.frameBotonesAcciones, text="Cargar desde Web")
         self.botonGuardar.grid(row=0, column=3, sticky=E)
+        # GENERAMOS BOTONES DE ACCIONES GUARDAR, BORRAR ELIMINAR
+        self.frameBotonesAcciones = Frame(self.panelNavelgacion)
+
+        self.frameBotonesAcciones.grid(row=0, column=1, sticky=E)
+        self.botonGuardar = Button(self.frameBotonesAcciones, text="Guardar")
+        self.botonGuardar.grid(row=0, column=0, sticky=E)
+        self.botonBorrar = Button(self.frameBotonesAcciones, text="Borrar")
+        self.botonBorrar.grid(row=0, column=1, sticky=E)
+        self.botonEliminar = Button(self.frameBotonesAcciones, text="Eliminar")
+        self.botonEliminar.grid(row=0, column=2, sticky=E)
+        self.botonCargarWeb = Button(self.frameBotonesAcciones, text="Cargar desde Web")
+        self.botonCargarWeb.grid(row=0, column=3, sticky=E)
+        self.botonFirst.config(command=self.getFirst)
+        self.botonNext.config(command=self.getNext)
+        self.botonPrev.config(command=self.getPrev)
+        self.botonLast.config(command=self.getLast)
+        self.botonGuardar.config(command=self.guardar)
+        self.botonBorrar.config(command=self.borrar)
+
+    def borrar(self):
+        pass
+
+    def guardar(self):
+        pass
+
+    def getFirst(self):
+        pass
+
+    def getPrev(self):
+        pass
+
+    def getNext(self):
+        pass
+
+    def getLast(self):
+        pass
+
     def getPanelPrincipal(self):
         return self.panelPrincipal
-
-class Paciente(FrameGenerico):
-    def __init__(self, parent, cnf={}, **kw):
-        FrameGenerico.__init__(self, parent, cnf, **kw)
-        Label(self.getPanelPrincipal(),text="Nombre").grid(row=0,column=0)
+    def clearForm(self):
+        pass
 
 
 if __name__ == '__main__':
