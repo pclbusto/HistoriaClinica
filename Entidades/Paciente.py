@@ -19,6 +19,7 @@ class Paciente(Init.Base):
     pacienteMail = Column(String, default='')
     derivadoPor = Column(String, default='')
     motivoConsulta = Column(String, default='')
+    antecedentes = Column(String, default='')
 
     def __repr__(self):
         return "<Paciente.py(pacienteId='%s',pacienteNombre='%s')>" %(self.pacienteId, self.pacienteNombre)

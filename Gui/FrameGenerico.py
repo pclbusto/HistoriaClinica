@@ -1,13 +1,22 @@
 from tkinter import *
 from tkinter import Tk, ttk, Frame
 from iconos import Iconos
+
 import PIL.Image, PIL.ImageTk
 
 class FrameGenerico(Frame):
     def __init__(self, parent, cnf={}, **kw):
         Frame.__init__(self, parent, cnf, **kw)
+        self.rowconfigure(0,weight=1)
+        self.columnconfigure(0, weight=1)
+
         # CREAMOS DOS ZONAS. LA DEL PANEL Y LA BOTONERA DE ACCIONES Y NAVEGACION
         self.panelPrincipal=Frame(self)
+        self.panelPrincipal.rowconfigure(0, weight=1)
+        self.panelPrincipal.columnconfigure(0, weight=1)
+        self.panelPrincipal.rowconfigure(1, weight=4)
+        self.panelPrincipal.columnconfigure(1, weight=4)
+
         self.panelPrincipal.grid(row=0,column=0,sticky=E+W+S+N)
 
         self.panelNavelgacion = Frame(self)
@@ -43,11 +52,9 @@ class FrameGenerico(Frame):
         self.botonGuardar.grid(row=0, column=1, sticky=E)
         self.botonGuardar = Button(self.frameBotonesAcciones, text="Eliminar")
         self.botonGuardar.grid(row=0, column=2, sticky=E)
-        self.botonGuardar = Button(self.frameBotonesAcciones, text="Cargar desde Web")
-        self.botonGuardar.grid(row=0, column=3, sticky=E)
+
         # GENERAMOS BOTONES DE ACCIONES GUARDAR, BORRAR ELIMINAR
         self.frameBotonesAcciones = Frame(self.panelNavelgacion)
-
         self.frameBotonesAcciones.grid(row=0, column=1, sticky=E)
         self.botonGuardar = Button(self.frameBotonesAcciones, text="Guardar")
         self.botonGuardar.grid(row=0, column=0, sticky=E)
@@ -55,8 +62,6 @@ class FrameGenerico(Frame):
         self.botonBorrar.grid(row=0, column=1, sticky=E)
         self.botonEliminar = Button(self.frameBotonesAcciones, text="Eliminar")
         self.botonEliminar.grid(row=0, column=2, sticky=E)
-        self.botonCargarWeb = Button(self.frameBotonesAcciones, text="Cargar desde Web")
-        self.botonCargarWeb.grid(row=0, column=3, sticky=E)
         self.botonFirst.config(command=self.getFirst)
         self.botonNext.config(command=self.getNext)
         self.botonPrev.config(command=self.getPrev)
@@ -84,14 +89,13 @@ class FrameGenerico(Frame):
 
     def getPanelPrincipal(self):
         return self.panelPrincipal
-    def clearForm(self):
-        pass
 
 
 if __name__ == '__main__':
     root = Tk()
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
     publisher = Paciente(root, width=507, height=358)
-    publisher.pack()
-    # root.columnconfigure(0, weight=1)
-    # root.rowconfigure(0, weight=1)
+    publisher.grid(sticky=(E, S, W, N))
+
     root.mainloop()
