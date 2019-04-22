@@ -1,4 +1,5 @@
-from Entidades import Init, Paciente
+from Entidades import Init
+
 
 def install():
     Init.recreateTables()

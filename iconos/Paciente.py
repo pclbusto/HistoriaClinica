@@ -25,3 +25,4 @@ class Paciente(Init.Base):
         return "<Paciente.py(pacienteId='%s',pacienteNombre='%s')>" %(self.pacienteId, self.pacienteNombre)
 
 
+

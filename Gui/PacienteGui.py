@@ -2,11 +2,9 @@ from tkinter import *
 from tkinter import Tk, ttk
 from Gui import FrameGenerico as fg
 from datetime import datetime
-from Entidades.Paciente import Paciente
+from iconos.Paciente import Paciente
 from Entidades import Init
 from sqlalchemy import func
-from iconos import Iconos
-import PIL.Image, PIL.ImageTk
 from Gui.botonesNavegacion import PanelNavegacion
 
 class PacienteGui(fg.FrameGenerico):
