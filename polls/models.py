@@ -1,17 +1,15 @@
 from django.db import models
+from datetime import date
 
-
-class Sexo(models.TextChoices):
-    MASCULINO = 'M', _('Masculino')
-    FEMENINO = 'F', _('Femenino')
-    OTRO = 'O', _('Otro')
 
 class Paciente(models.Model):
-    documento_text = models.CharField("Documento", max_length=15)
-    paciente_nombre_text = models.CharField("Nombre", max_length=150)
-    paciente_apellido_text= models.CharField("Apellido", max_length=150)
-    paciente_fecha_nacimiento_date = models.DateField('Fecha Nacimiento')
-    paciente_sexo_enum = models.CharField("Sexo", max_length=1, choices=Sexo)
+    Sexo = [(' ', ' '), ('M', 'Masculino'), ('F', 'Femenino'), ('O', 'Otro')]
+
+    paciente_documento_text = models.CharField("Documentos", max_length=15)
+    paciente_nombre_text = models.CharField("Nombre", max_length=150, default='')
+    paciente_apellido_text= models.CharField("Apellido", max_length=150, default='')
+    paciente_fecha_nacimiento_date = models.DateField('Fecha Nacimiento', default=date.today())
+    paciente_sexo_enum = models.CharField("Sexo", max_length=1, choices=Sexo, default=' ')
 
 
 
@@ -53,5 +51,5 @@ class Paciente(models.Model):
 
 
     def __str__(self):
-        return "Documento: {}, Nombre: {}, Apellido: {}, Fecha Nacimiento: {}".format(self.documento_text, self.nombre_text, self.apellido_text, self.fecha_nacimiento_date)
+        return "Documento: {}, Nombre: {}, Apellido: {}, Fecha Nacimiento: {}".format(self.paciente_documento_text, self.paciente_nombre_text, self.paciente_apellido_text, self.paciente_fecha_nacimiento_date)
 
